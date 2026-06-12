@@ -47,7 +47,9 @@ public class BookingController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> cancelBooking(@PathVariable Long id) {
         if (bookingService.cancelBooking(id)) {
-//            return ResponseEntity.ok().build(); Delete
+//            return ResponseEntity.ok().build(); 200
+            return ResponseEntity.noContent().build();//204
+
         }
         return ResponseEntity.notFound().build();
     }

@@ -48,7 +48,9 @@ public class VenueController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVenue(@PathVariable Long id) {
         if (venueService.deleteVenue(id)) {
-            return ResponseEntity.ok().build();
+//            return ResponseEntity.ok().build(); 200
+            //delete 204
+            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
     }

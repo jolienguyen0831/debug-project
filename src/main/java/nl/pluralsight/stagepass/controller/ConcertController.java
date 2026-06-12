@@ -52,7 +52,9 @@ public class ConcertController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteConcert(@PathVariable Long id) {
         if (concertService.deleteConcert(id)) {
-            return ResponseEntity.ok().build();
+//            return ResponseEntity.ok().build();200
+            return ResponseEntity.noContent().build(); //204
+
         }
         return ResponseEntity.notFound().build();
     }
