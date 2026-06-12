@@ -42,8 +42,13 @@ public class BookingService {
                 .orElseThrow(() -> new RuntimeException("Concert not found"));
 
         if (concert.getAvailableSeats() < booking.getNumberOfTickets()) {
-            throw new RuntimeException("Not enough available seats");
+            throw new InsufficientSeatsException("Not enough seats available. Requested: "
+                    + booking.getNumberOfTickets()
+                    + ", but only available: "
+                    + concert.getAvailableSeats()
+            );
         }
+
 
         concert.setAvailableSeats(concert.getAvailableSeats() - booking.getNumberOfTickets());
         concertRepository.save(concert);
